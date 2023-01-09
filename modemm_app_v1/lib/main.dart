@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:modemm_app_v1/login.dart';
-
 
 void main() {
   runApp(const MyApp());

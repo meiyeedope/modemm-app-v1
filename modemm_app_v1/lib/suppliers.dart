@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:modemm_app_v1/addsupplier.dart';
+import 'package:modemm_app_v1/supplierdetailspage.dart';
 
 class SuppliersPage extends StatefulWidget {
   const SuppliersPage({super.key});
@@ -8,75 +10,78 @@ class SuppliersPage extends StatefulWidget {
 }
 
 class _SuppliersPageState extends State<SuppliersPage> {
+  final suppliername = ['ssss', 'ddddd', 'ooooo'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Suppliers"),
-        backgroundColor: const Color.fromRGBO(207, 11, 40, 1),
-        actions: const <Widget>[
+          title: const Text("Suppliers"),
+          backgroundColor: const Color.fromRGBO(207, 11, 40, 1),
+          actions: <Widget>[
             Padding(
-              padding: EdgeInsets.all(10.0),
-                    child: 
-                        IconButton(
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                          onPressed: null,
-                        ),
-                    ),
-                  
-        ]),
-      body: ListView.separated(
-          itemCount: 2,
-          itemBuilder: (BuildContext context, int index) {
-      return Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8)),
-        elevation: 2,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-             padding: const EdgeInsets.fromLTRB(20, 10, 30, 10),
-              child: Hero(
-                tag: 'images/rsaflogo.png',
-                child: Container(
-                  height: 139,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage('images/rsaflogo.png'),
-                      fit: BoxFit.fitWidth,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.white,
                 ),
+                onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Addsupplier())),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // ignore: prefer_const_literals_to_create_immutables
+          ]),
+      body: ListView.separated(
+        itemCount: 3,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            elevation: 2,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const Text(
-                  'Chateau Italia Pte. Ltd.',
-                  style: TextStyle(
-                      fontSize: 16.0, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 30, 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SuppliersDetailsPage(),
+                        ),
+                      );
+                    },
+                    child: Image.asset(
+                      'images/rsaflogo.png',
+                      fit: BoxFit.cover,
+                      width: 130,
+                      height: 120,
+                    ),
+                  ),
                 ),
-                const Text('Contact: 67333308',
-                    style: TextStyle(fontSize: 15.0)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: <Widget>[
+                    const Text(
+                      'Chateau Italia Pte. Ltd.',
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ),
+                    const Text('Contact: 67333308',
+                        style: TextStyle(fontSize: 15.0)),
                     const Text('Email: info.chateauitalia.com',
-                    style: TextStyle(fontSize: 15.0)),
+                        style: TextStyle(fontSize: 15.0)),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
-      );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-        const Divider(height: 1),
-        ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) =>
+            const Divider(height: 1),
+      ),
       drawer: SizedBox(
         width: MediaQuery.of(context).size.width * 0.55, //<-- SEE HERE
         child: Drawer(
@@ -191,7 +196,7 @@ class _SuppliersPageState extends State<SuppliersPage> {
                   'Logout',
                   style: TextStyle(
                     fontSize: 15,
-                    color:  Color.fromRGBO(207, 11, 40, 1),
+                    color: Color.fromRGBO(207, 11, 40, 1),
                   ),
                 ),
                 onTap: () {

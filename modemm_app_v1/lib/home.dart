@@ -4,6 +4,7 @@ import 'package:modemm_app_v1/dashboard.dart';
 import 'package:modemm_app_v1/equipments.dart';
 import 'package:modemm_app_v1/login.dart';
 import 'package:modemm_app_v1/nav.dart';
+import 'package:modemm_app_v1/qr.dart';
 import 'package:modemm_app_v1/suppliers.dart';
 
 
@@ -22,11 +23,10 @@ class _HomePage extends State<HomePage> {
             length: 5,
             child: Scaffold(
                 bottomNavigationBar: menu(),
-                body:  const TabBarView(children: [
+                body:  TabBarView(children: [
                   DashboardPage(),
                   DemoApp(),
-                  // qrPage(),
-                  LoginPage(),
+                  qrPage(),
                   SuppliersPage(),
                   EquipmentPage(),
                 ]))));
