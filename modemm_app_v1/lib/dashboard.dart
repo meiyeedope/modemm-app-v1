@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:modemm_app_v1/dueinnext3months.dart';
 import 'package:modemm_app_v1/passdueduetoday.dart';
+import 'package:modemm_app_v1/setting.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -323,7 +324,10 @@ class _DashboardPageState extends State<DashboardPage> {
                   // Update the state of the app
                   // ...
                   // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsPage()));
                 },
               ),
               ListTile(
